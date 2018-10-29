@@ -25,7 +25,7 @@ int search(char* chararr, char* comparr);
 
 int main() {
 	int numberofchars = 0;
-	char *chararray;
+	char *chararray;//hello
 	char charcompare[1024];
 	numberofchars = numchars();
     chararray = new char [numberofchars];
