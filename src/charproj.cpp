@@ -11,12 +11,13 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string>
+#include <vector>
 using namespace std;
 int countSubstring(std::string& str, std::string& sub);
 int numchars();
 int generatearay(int number,char* chararr);
 int printarray(char* charry, int numchars);
-
+void printCombinations(const std::vector<int>& numbers, int size, std::vector<int>& line, std::string& comparearray);
 
 
 int gencompare(char* chcompare);
@@ -24,17 +25,27 @@ int printcompare(char* chcompare);
 int search(char* chararr, char* comparr);
 
 int main() {
+
+	std::vector<int> numbers = {0, 1, 2, 3};
+	std::vector<int> line;
+	int size =8;
 	int numberofchars = 0;
 	char *chararray;
-	char charcompare[1024];
-	numberofchars = numchars();
-    chararray = new char [numberofchars];
+	std::string charcompare;
+	int length;
+	//numberofchars = numchars();
+    //chararray = new char [numberofchars];
 
-   generatearay(numberofchars, chararray);
+
+	printCombinations(numbers, size,line,charcompare);
+
+    cout << charcompare;
+
+   //generatearay(numberofchars, chararray);
    //printarray(chararray,numberofchars);
-  gencompare(charcompare);
-   //printcompare(charcompare);
-  search(chararray, charcompare);
+  //gencompare(charcompare);
+    //printcompare(charcompare);
+  //search(chararray, charcompare);
 	return 0;
 }
 
@@ -269,6 +280,43 @@ int countSubstring(std::string& str, std::string& sub)
     return count;
 }
 
+
+void printCombinations(const std::vector<int>& numbers, int size, std::vector<int>& line, std::string &comparearray) {
+
+	static int runtimes;
+    for (unsigned i = 0; i < numbers.size(); i++) {
+
+        line.push_back(numbers[i]);
+        if (size <= 1) { // Condition that prevents infinite loop in recursion
+        	for (const auto& j : line)
+        	                switch(j){
+
+        	                case 0:comparearray.append("A");
+        	                break;
+
+        	                case 1:comparearray.append("C");
+        	                break;
+
+        	                case 2:comparearray.append("T");
+        	                 break;
+
+        	                case 3:comparearray.append("G");
+
+
+
+
+        	                }
+
+
+
+
+        	            line.erase(line.end() - 1);
+        } else {
+            printCombinations(numbers, size - 1, line,comparearray); // Recursion happens here
+            line.erase(line.end() - 1);
+        }
+    }
+}
 
 
 
