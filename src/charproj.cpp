@@ -12,6 +12,7 @@
 #include <time.h>
 #include <string>
 #include <vector>
+#include <cmath>
 using namespace std;
 int countSubstring(std::string& str, std::string& sub);
 int numchars();
@@ -22,30 +23,30 @@ void printCombinations(const std::vector<int>& numbers, int size, std::vector<in
 
 int gencompare(char* chcompare);
 int printcompare(char* chcompare);
-int search(char* chararr, char* comparr);
+int search(char* chararr, std::string comparr,int size);
 
 int main() {
 
 	std::vector<int> numbers = {0, 1, 2, 3};
 	std::vector<int> line;
-	int size =8;
+	int size =16;
 	int numberofchars = 0;
 	char *chararray;
 	std::string charcompare;
 	int length;
-	//numberofchars = numchars();
-    //chararray = new char [numberofchars];
+	numberofchars = numchars();
+    chararray = new char [numberofchars];
 
 
 	printCombinations(numbers, size,line,charcompare);
 
-    cout << charcompare;
+    //cout << charcompare;
 
-   //generatearay(numberofchars, chararray);
-   //printarray(chararray,numberofchars);
-  //gencompare(charcompare);
-    //printcompare(charcompare);
-  //search(chararray, charcompare);
+   generatearay(numberofchars, chararray);
+   printarray(chararray,numberofchars);
+
+
+  search(chararray, charcompare,size );
 	return 0;
 }
 
@@ -112,154 +113,36 @@ int printarray(char* charry, int numchars){
 	return 0;
 }
 
-int gencompare(char* chcompare){
-
-	int a=0;
-	int b=1;
-	int c=2;
-	int d=3;
-
-
-	for(int e=0;e<4;e++){
-
-
-		for(int f=0;f<4;f++){
-
-
-			for(int g=0;g<4;g++){
-
-
-				for(int h=0;h<4;h++){
-
-					switch(e){
-
-							case 0: chcompare[a] = 'A';
-					        break;
-							case 1: chcompare[a] = 'C';
-					        break;
-							case 2: chcompare[a] = 'T';
-					        break;
-							case 3: chcompare[a] = 'G';
-					}
-
-
-					switch(f){
-					         case 0: chcompare[b] = 'A';
-					         break;
-					         case 1: chcompare[b] = 'C';
-					         break;
-					         case 2: chcompare[b] = 'T';
-					         break;
-					         case 3: chcompare[b] = 'G';
-
-
-					}
-
-					switch(g){
-					case 0: chcompare[c] = 'A';
-                    break;
-                    case 1: chcompare[c] = 'C';
-					break;
-				    case 2: chcompare[c] = 'T';
-					break;
-					case 3: chcompare[c] = 'G';
-					}
-
-
-					switch(h){
-				    case 0: chcompare[d] = 'A';
-					break;
-					case 1: chcompare[d] = 'C';
-			        break;
-			        case 2: chcompare[d] = 'T';
-			        break;
-				    case 3: chcompare[d] = 'G';
-										}
-
-
-					a = a+4;
-					b = b+4;
-					c = c+4;
-					d = d+4;
-
-					}
 
 
 
 
 
-
-
-
-
-
-
-
-			}
-
-
-
-		}
-
-
-
-
-
-
-	}
-
-
-
-
-return 0;
-}
-
-
-int printcompare(char* chcompare){
-
-	for(int x=0;x<1024;x++){
-
-		cout << chcompare[x];
-        if((x%4) ==3){
-        	cout <<',';
-
-
-        }
-
-
-        if(x%120 == 0){
-
-        	cout << '\n';
-
-        }
-	}
-
-
-	return 0;
-}
-
-int search(char* chararr, char* comparr){
+int search(char* chararr, std::string comparr,int size){
 
 	std::string randomstring = chararr;
 	std::string substring;
+
+
 	int a=0;
-	char intermediate[4];
+
 	int number=0;
 	int total=0;
-	for(int x=0;x<256;x++){
+    float looptimes = pow(size,size);
 
-		intermediate[0] = comparr[a];
-		intermediate[1] = comparr[a+1];
-		intermediate[2] = comparr[a+2];
-		intermediate[3] = comparr[a+3];
-		substring = intermediate;
+	for(int x=0;x<looptimes;x++){
+
+
+
+
+
+		substring = comparr.substr(a,size);
 
 		number = countSubstring(randomstring, substring);
         total = total + number;
-		cout << comparr[a] << comparr[a +1] << comparr[a +2] << comparr[a+3] << ","
-				" " << number <<'\n';
+		cout << substring << ", "<< number <<'\n';
 
-		a = a+4;
+		a = a+size;
 
 
 	}
@@ -283,7 +166,7 @@ int countSubstring(std::string& str, std::string& sub)
 
 void printCombinations(const std::vector<int>& numbers, int size, std::vector<int>& line, std::string &comparearray) {
 
-	static int runtimes;
+
     for (unsigned i = 0; i < numbers.size(); i++) {
 
         line.push_back(numbers[i]);
