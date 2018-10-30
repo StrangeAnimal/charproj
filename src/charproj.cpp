@@ -25,15 +25,15 @@ int search(char* chararr, char* comparr);
 
 int main() {
 	int numberofchars = 0;
-	char *chararray;//hello
+	char *chararray;
 	char charcompare[1024];
 	numberofchars = numchars();
     chararray = new char [numberofchars];
 
    generatearay(numberofchars, chararray);
-   printarray(chararray,numberofchars);
+   //printarray(chararray,numberofchars);
   gencompare(charcompare);
-   //printcompare();
+   //printcompare(charcompare);
   search(chararray, charcompare);
 	return 0;
 }
@@ -245,7 +245,8 @@ int search(char* chararr, char* comparr){
 
 		number = countSubstring(randomstring, substring);
         total = total + number;
-		cout << comparr[a] << comparr[a +1] << comparr[a +2] << comparr[a+3] << "= " << number <<'\n';
+		cout << comparr[a] << comparr[a +1] << comparr[a +2] << comparr[a+3] << ","
+				" " << number <<'\n';
 
 		a = a+4;
 
