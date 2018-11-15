@@ -21,19 +21,18 @@ int printarray(char* charry, int numchars);
 void printCombinations(const std::vector<int>& numbers, int size, std::vector<int>& line, std::string& comparearray);
 
 
-int gencompare(char* chcompare);
-int printcompare(char* chcompare);
+
 int search(char* chararr, std::string comparr,int size);
 
 int main() {
 
 	std::vector<int> numbers = {0, 1, 2, 3};
 	std::vector<int> line;
-	int size =16;
+	int size =5;
 	int numberofchars = 0;
 	char *chararray;
 	std::string charcompare;
-	int length;
+
 	numberofchars = numchars();
     chararray = new char [numberofchars];
 
