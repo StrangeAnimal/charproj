@@ -28,7 +28,7 @@ int main() {
 
 	std::vector<int> numbers = {0, 1, 2, 3};
 	std::vector<int> line;
-	int size =5;
+	int size =4;
 	int numberofchars = 0;
 	char *chararray;
 	std::string charcompare;
@@ -127,7 +127,7 @@ int search(char* chararr, std::string comparr,int size){
 
 	int number=0;
 	int total=0;
-    float looptimes = pow(size,size);
+    float looptimes = pow(4,size);
 
 	for(int x=0;x<looptimes;x++){
 
