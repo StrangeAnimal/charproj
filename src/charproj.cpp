@@ -2,8 +2,8 @@
 // Name        : charproj.cpp
 // Author      : Me
 // Version     :
-// Copyright   : Your copyright notice
-// Description : Hello World in C++, Ansi-style
+// Copyright   : Pls no stealy
+// Description :
 //============================================================================
 
 #include <iostream>
@@ -19,22 +19,19 @@ int numchars();
 int generatearay(int number,char* chararr);
 int printarray(char* charry, int numchars);
 void printCombinations(const std::vector<int>& numbers, int size, std::vector<int>& line, std::string& comparearray);
-
-
-
 int search(char* chararr, std::string comparr,int size);
 
 int main() {
 
-	std::vector<int> numbers = {0, 1, 2, 3};
+	std::vector<int> numbers = {0, 1, 2, 3}; //array to store values used to generate combinations
 	std::vector<int> line;
-	int size =4;
-	int numberofchars = 0;
-	char *chararray;
-	std::string charcompare;
+	int size =4; //size of the combination
+	int numberofchars = 0; //a number to store the number of random characters to be generated
+	char *chararray; //an array to store the random chars
+	std::string charcompare; //a string to store the combinations
 
-	numberofchars = numchars();
-    chararray = new char [numberofchars];
+	numberofchars = numchars(); //get the number of chars to generate
+    chararray = new char [numberofchars]; //generate a dynamic array.
 
 
 	printCombinations(numbers, size,line,charcompare);
